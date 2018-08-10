@@ -28,9 +28,7 @@ Please install these tools using our pip package hosted on PyPI:
 
 ### Requirements and Dependencies
 
-These tools are intended to work with Python 2.7 systems. 
-While these tools may work with Python 3.x, if so, that's a happy accident.
-Pull Requests welcome! :)
+These tools are intended to work with Python 3.
 
 These tools depend on the submodule `GlyphsInfo`.
 Make sure the submodule is up to date by running:
