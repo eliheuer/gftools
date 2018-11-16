@@ -32,7 +32,7 @@ Generating a METADATA.pb file for a new family:
 1. Determine the family's license type, ofl, ufl or apache
 2. Create a new folder under the license type directory
 3. Name the folder so it's the family name, all lowercase and no spaces.
-4. Run the following: python add_font.py /path/to/new/family
+4. Run the following from gftools root: python add_font.py /path/to/new/family
 5. Update the category field in the generated METADATA.pb file.
 
 Generating a METADATA.pb file for an existing family:
@@ -123,6 +123,7 @@ def _MakeMetadata(fontdir, is_new):
   metadata = fonts_pb2.FamilyProto()
   metadata.name = file_family_style_weights[0].family
 
+  # TODO: This should use fonttools to get designer? -- Eli H
   if not is_new:
     old_metadata = fonts_pb2.FamilyProto()
     with open(old_metadata_file, 'rb') as old_meta:
@@ -253,6 +254,7 @@ def main(argv):
   metadata = _MakeMetadata(fontdir, is_new)
   text_proto = text_format.MessageToString(metadata)
 
+  # TODO: We should get better descriptions from font tools.
   desc = os.path.join(fontdir, 'DESCRIPTION.en_us.html')
   if os.path.isfile(desc):
     print 'DESCRIPTION.en_us.html exists'
